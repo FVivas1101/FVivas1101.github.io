@@ -1,89 +1,233 @@
-<!-- ============================================ -->
-<!--                Side By Side                  -->
-<!-- ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Portfolio | [Your Name]</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #2563eb;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --text: #334155;
+        }
 
-<section id="sbs-1470">
-    <div class="cs-container">
-        <div class="cs-image-group">
-            <!--Top left image-->
-            <picture class="cs-picture cs-picture1">
-                <!--Mobile Image-->
-                <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/kid1.jpg">
-                <!--Tablet and above Image-->
-                <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/kid1.jpg">
-                <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/kid1.jpg" alt="kid" width="413" height="388">
-            </picture>
-            <!--Middle image-->
-            <picture class="cs-picture cs-picture2">
-                <!--Mobile Image-->
-                <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/kid2.jpg">
-                <!--Tablet and above Image-->
-                <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/kid2.jpg">
-                <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/kid2.jpg" alt="kid" width="290" height="290">
-            </picture>
-            <!--Bottom right image-->
-            <picture class="cs-picture cs-picture3">
-                <!--Mobile Image-->
-                <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/kid3.jpg">
-                <!--Tablet and above Image-->
-                <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/kid3.jpg">
-                <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/kid3.jpg" alt="kid" width="382" height="349">
-            </picture>
-            <!--Green Seed-->
-            <img class="cs-floater1" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/green-seeds-rotated.svg" alt="graphic" width="163" height="121" aria-hidden="true">
-            <!--Red Seeds-->
-            <img class="cs-floater2" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/red-seeds.svg" alt="graphic" width="81" height="73" aria-hidden="true">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--dark);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; color: #cbd5e1; }
+
+        /* Sections */
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 60px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark);
+            font-size: 2rem;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+            left: 50%;
+            position: relative;
+            transform: translateX(-50%);
+        }
+
+        /* Skills Tags */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 { margin-bottom: 10px; color: var(--dark); }
+        .project-card p { font-size: 0.95rem; margin-bottom: 15px; }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: var(--dark);
+            color: white;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            nav ul { display: none; } /* Simplified for mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><strong>DevPortfolio</strong></div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Hi, I'm [Your Name]</h1>
+        <p>Computer Science Student & Aspiring Software Engineer</p>
+    </header>
+
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <p style="text-align: center; max-width: 700px; margin: auto;">
+            I am a Junior CS student at [University Name] passionate about building scalable web applications and exploring Machine Learning. 
+            When I'm not coding, I contribute to open-source projects and write technical blogs.
+        </p>
+    </section>
+
+    <section id="skills" class="container">
+        <h2>Technical Expertise</h2>
+        <div class="skills-container">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">JavaScript (React)</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Git & GitHub</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">AWS</span>
         </div>
-        <div class="cs-content">
-            <span class="cs-topper">About Stitch Day Care</span>
-            <h2 class="cs-title">Welcome To Stitch Daycare & Preschool</h2>
-            <p class="cs-text">
-                Stitch day care is a place where you can keep your baby with peace in your mind when you are working in your office for the better future of your child. We promise to take care of your child’s social, emotional, intellectual and physical needs with sensitive care and we also ensure you their security with our life.
-            </p>
-            <ul class="cs-ul">
-                <li class="cs-li">
-                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/green-check.svg" alt="checkmark" width="24" height="24">
-                    Our job is to make your life easier.
-                </li>
-                <li class="cs-li">
-                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/green-check.svg" alt="checkmark" width="24" height="24">
-                    Experience childcare as it should be.
-                </li>
-                <li class="cs-li">
-                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/green-check.svg" alt="checkmark" width="24" height="24">
-                    We are childcare professionals.
-                </li>
-                <li class="cs-li">
-                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/green-check.svg" alt="checkmark" width="24" height="24">
-                    Digital Clean Checklist Prepared New Year
-                </li>
-                <li class="cs-li">
-                    <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/green-check.svg" alt="checkmark" width="24" height="24">
-                    Babysitting with immense love and care.
-                </li>
-            </ul>
-            <div class="button-box">
-                <a class="cs-link" href="tel:555-555-0234">
-                    <picture class="cs-img-wrapper">
-                        <img class="cs-img" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/profile1.jpg" alt="profile" width="52" height="52">
-                    </picture>
-                    <div class="cs-info">
-                        <span class="cs-header">Jenny Wilson</span>
-                        <span class="cs-job">Owner</span>
-                    </div>
-                </a>
-                <a class="cs-link" href="tel:219-924-5555">
-                    <picture class="cs-wrapper">
-                        <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/green-phone.svg" alt="icon" width="24" height="24">
-                    </picture>
-                    <div class="cs-info">
-                        <span class="cs-phone">(219) 924-5555</span>
-                        <span class="cs-link-content">Call to questions</span>
-                    </div>
-                </a>
+    </section>
+
+    <section id="projects" class="container">
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <h3>Pathfinding Visualizer</h3>
+                <p>A web application built with React that visualizes Dijkstra’s and A* algorithms in real-time.</p>
+                <a href="#" class="btn">View on GitHub</a>
             </div>
-            <a href="" class="cs-button-solid">Learn More</a>
+            <!-- Project 2 -->
+            <div class="project-card">
+                <h3>Task Manager API</h3>
+                <p>A RESTful API built using Node.js and MongoDB with JWT authentication and CRUD functionality.</p>
+                <a href="#" class="btn">View on GitHub</a>
+            </div>
+            <!-- Project 3 -->
+            <div class="project-card">
+                <h3>Weather Predictor</h3>
+                <p>A Python-based machine learning model that predicts local rainfall using Scikit-Learn.</p>
+                <a href="#" class="btn">View on GitHub</a>
+            </div>
         </div>
-    </div>
-</section>
-                                
+    </section>
+
+    <section id="contact" class="container" style="text-align: center;">
+        <h2>Get In Touch</h2>
+        <p>I'm currently looking for Internship opportunities for Summer 2026!</p>
+        <p style="margin-top: 20px;">
+            <strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a><br>
+            <strong>LinkedIn:</strong> <a href="#">linkedin.com/in/yourprofile</a>
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 [Your Name]. Built with HTML & CSS.</p>
+    </footer>
+
+</body>
+</html>
